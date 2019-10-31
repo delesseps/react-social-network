@@ -378,7 +378,7 @@ const mapStateToProps = (state: Map<string, any>, ownProps: ICircleComponentProp
   userTies.forEach((userTie, userTieId) => {
     const theUserTie: Map<string, any> = userTie
     const circleList: ImuList<string> = theUserTie.getIn(['circleIdList'])
-    if (circleList.indexOf(ownProps.id) > -1) {
+    if (circleList.toArray().indexOf(ownProps.id) > -1) {
       usersOfCircle = usersOfCircle.set(userTieId!, theUserTie)
     }
   })

@@ -2,8 +2,7 @@
 // - Import react components
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, NavLink, withRouter, Redirect } from 'react-router-dom'
-import { push } from 'connected-react-router'
+import { withRouter } from 'react-router-dom'
 import Snackbar from '@material-ui/core/Snackbar'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import {Helmet} from 'react-helmet'

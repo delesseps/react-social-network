@@ -54,7 +54,7 @@
     "react": "16.8.5",
     "react-addons-test-utils": "^15.6.2",
     "react-avatar-editor": "^11.0.4",
-    "react-day-picker": "^7.2.4",
+    "react-day-picker": "7.2.4",
     "react-dom": "16.8.5",
     "react-event-listener": "^0.6.4",
     "react-helmet": "^5.2.0",

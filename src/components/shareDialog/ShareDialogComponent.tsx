@@ -15,7 +15,6 @@ import {
   TwitterShareButton,
   TwitterIcon,
 
-  GooglePlusShareButton,
   GooglePlusIcon,
 
   LinkedinShareButton,
@@ -151,22 +150,6 @@ export class ShareDialogComponent extends Component<IShareDialogComponentProps, 
                     <ListItemText inset primary={translate!('post.linkedinButton')} />
                   </MenuItem>
               </LinkedinShareButton>
-              </div>
-              <div>
-                <GooglePlusShareButton
-                  onShareWindowClose={onClose}
-                  url={`${location.origin}/${post.get('ownerUserId')}/posts/${post.get('id')}`}
-                  quote={post.get('body')}
-                  hashtag={`#${post.getIn(['tags', 0], '')}`}>
-                  <MenuItem >
-                    <ListItemIcon classes={{ root: classes.networkShare }}>
-                      <GooglePlusIcon
-                        size={32}
-                        round />
-                    </ListItemIcon>
-                    <ListItemText inset primary={translate!('post.googlePlusButton')} />
-                  </MenuItem>
-              </GooglePlusShareButton>
               </div>
               <MenuItem onClick={onCopyLink} >
                 <ListItemIcon>

@@ -1,10 +1,7 @@
 // - Import react components
 import PublicRoute from './PublicRoute'
-import PrivateRoute from './PrivateRoute'
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Route, Switch, withRouter, Redirect, NavLink } from 'react-router-dom'
+import { Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom'
 import Loadable from 'react-loadable'
 
 import { IRouterProps } from './IRouterProps'
@@ -39,9 +36,9 @@ const AsyncSetting = Loadable({
 /**
  * Master router
  */
-export class MasterRouter extends Component<IRouterProps, any> {
+export class MasterRouter extends Component<IRouterProps & RouteComponentProps<any>, any> {
   render () {
-    const { enabled, match, data } = this.props
+    const { enabled, data } = this.props
     return (
         enabled ? (
         <Switch>
@@ -57,4 +54,4 @@ export class MasterRouter extends Component<IRouterProps, any> {
     )
   }
 }
-export default withRouter<any>(connect(null, null)(MasterRouter as any)) as typeof MasterRouter
+export default withRouter(MasterRouter)

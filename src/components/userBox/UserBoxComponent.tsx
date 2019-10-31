@@ -254,12 +254,13 @@ export class UserBoxComponent extends Component<IUserBoxComponentProps, IUserBox
    * Create a circle list of user which belong to
    */
   circleList = () => {
-    let { circles, userId, userBelongCircles, selectedCircles, classes } = this.props
+    let { circles, userId, selectedCircles, classes } = this.props
     const circleDomList: any[] = []
     if (circles) {
 
       circles.forEach((circle, circleId) => {
-        let isBelong = selectedCircles ? selectedCircles!.indexOf(circleId!) > -1 : false
+        const selectedCirclesArr = (selectedCircles && selectedCircles.toArray) ? selectedCircles.toArray() : selectedCircles
+        let isBelong = selectedCirclesArr ? selectedCirclesArr.indexOf(circleId!) > -1 : false
 
         // Create checkbox for selected/unselected circle
         circleDomList.push(

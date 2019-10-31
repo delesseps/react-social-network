@@ -13,7 +13,6 @@ import configureStore from 'store/configureStore'
 import { ConnectedRouter } from 'connected-react-router/immutable'
 
 // - Actions
-import * as localeActions from 'store/actions/localeActions'
 import * as globalActions from 'store/actions/globalActions'
 
 // - Import app components
@@ -51,9 +50,9 @@ const theme = createMuiTheme({
 	},
 })
 
-const supportsHistory = 'pushState' in window.history
+// const supportsHistory = 'pushState' in window.history
 ReactDOM.render(
-	<Provider store={configureStore.store}>
+	<Provider store={configureStore.store as any}>
 		<ConnectedRouter history={configureStore.history}>
 			<MuiThemeProvider theme={theme}>
 				<Master />

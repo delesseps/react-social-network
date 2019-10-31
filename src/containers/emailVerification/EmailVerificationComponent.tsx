@@ -1,15 +1,12 @@
 // - Import external components
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, withRouter } from 'react-router-dom'
 import { push } from 'connected-react-router'
 import Paper from '@material-ui/core/Paper'
-import TextField from '@material-ui/core/TextField'
-import RaisedButton from '@material-ui/core/Button'
 import Button from '@material-ui/core/Button'
 import config from 'src/config'
 import { withStyles } from '@material-ui/core/styles'
-import { getTranslate, getActiveLanguage } from 'react-localize-redux'
+import { getTranslate } from 'react-localize-redux'
 
 // - Import actions
 import * as authorizeActions from 'src/store/actions/authorizeActions'
@@ -149,4 +146,4 @@ const mapStateToProps = (state: any, ownProps: IEmailVerificationComponentProps)
 }
 
 // - Connect component to redux store
-export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles as any)(EmailVerificationComponent as any) as any)) as typeof EmailVerificationComponent
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles as any)(EmailVerificationComponent as any) as any)

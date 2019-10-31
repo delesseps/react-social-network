@@ -295,4 +295,4 @@ const mapStateToProps = (state: Map<string, any>, ownProps: IStreamComponentProp
 }
 
 // - Connect component to redux store
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StreamComponent as any) as any) as typeof StreamComponent
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StreamComponent as any) as any)

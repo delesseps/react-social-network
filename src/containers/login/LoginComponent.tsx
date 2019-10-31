@@ -5,11 +5,9 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { push } from 'connected-react-router'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
-import RaisedButton from '@material-ui/core/Button'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import Divider from '@material-ui/core/Divider'
-import ActionAndroid from '@material-ui/icons/Android'
 import { withStyles } from '@material-ui/core/styles'
 import config from 'src/config'
 import { localize } from 'react-localize-redux'
@@ -255,4 +253,4 @@ const mapStateToProps = (state: any, ownProps: ILoginComponentProps) => {
 }
 
 // - Connect component to redux store
-export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles as any)(localize(LoginComponent as any, 'locale', CommonAPI.getStateSlice) as any) as any)) as typeof LoginComponent
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles as any)(localize(LoginComponent as any, 'locale', CommonAPI.getStateSlice) as any) as any) as any)

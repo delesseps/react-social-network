@@ -3,55 +3,36 @@ import { HomeRouter } from 'routes'
 import { Map } from 'immutable'
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { Route, Switch, withRouter, Redirect, NavLink } from 'react-router-dom'
+import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { getTranslate, getActiveLanguage } from 'react-localize-redux'
-import config from 'src/config'
 import classNames from 'classnames'
 
 import { withStyles } from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
-import Menu from '@material-ui/core/Menu'
 import MenuList from '@material-ui/core/MenuList'
 import MenuItem from '@material-ui/core/MenuItem'
-import ListItem from '@material-ui/core/ListItem'
-import ListIcon from '@material-ui/core/ListItemIcon'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Divider from '@material-ui/core/Divider'
-import SvgArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import SvgHome from '@material-ui/icons/Home'
 import SvgFeedback from '@material-ui/icons/Feedback'
 import SvgSettings from '@material-ui/icons/Settings'
 import SvgAccountCircle from '@material-ui/icons/AccountCircle'
 import SvgPeople from '@material-ui/icons/People'
-import List from '@material-ui/core/List'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
 import Hidden from '@material-ui/core/Hidden'
-import MenuIcon from '@material-ui/icons/Menu'
 
 // - Import app components
-import Sidebar from 'src/components/sidebar'
-import StreamComponent from 'containers/stream'
 import HomeHeader from 'src/components/homeHeader'
-import SidebarContent from 'src/components/sidebarContent'
-import SidebarMain from 'src/components/sidebarMain'
-import Profile from 'containers/profile'
-import PostPage from 'containers/postPage'
-import People from 'containers/people'
 
 // - Import API
 
 // - Import actions
 // - Import actions
 import {
-  authorizeActions,
   imageGalleryActions,
   postActions,
-  commentActions,
-  voteActions,
   userActions,
   globalActions,
   circleActions,
@@ -146,10 +127,10 @@ const styles = (theme: any) => ({
 })
 
 // - Create Home component class
-export class HomeComponent extends Component<IHomeComponentProps, IHomeComponentState> {
+export class HomeComponent extends Component<IHomeComponentProps & RouteComponentProps<any>, IHomeComponentState> {
 
   // Constructor
-  constructor(props: IHomeComponentProps) {
+  constructor(props: any) {
     super(props)
 
     // Default state
@@ -193,8 +174,8 @@ export class HomeComponent extends Component<IHomeComponentProps, IHomeComponent
    * @memberof Home
    */
   render() {
-    const HR = HomeRouter
-    const { loaded, authed, loadDataStream, mergedPosts, hasMorePosts, showSendFeedback, translate, classes, theme } = this.props
+    const { loaded, loadDataStream, mergedPosts, hasMorePosts, showSendFeedback, translate, classes, theme,
+    history, location, match } = this.props
     const { drawerOpen } = this.state
     const drawer = (
       <div>
@@ -289,7 +270,7 @@ export class HomeComponent extends Component<IHomeComponentProps, IHomeComponent
             })}
           >
           
-            <HR enabled={loaded!} data={{ mergedPosts, loadDataStream, hasMorePosts }} />
+            <HomeRouter enabled={loaded!} data={{ mergedPosts, loadDataStream, hasMorePosts }} history={history} location={location} match={match} />
           </main>
         </div>
       </div>
@@ -369,4 +350,4 @@ const mapStateToProps = (state: Map<string, any>, ownProps: IHomeComponentProps)
 }
 
 // - Connect component to redux store
-export default withRouter<any>(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles as any, { withTheme: true })(HomeComponent as any) as any)) as typeof HomeComponent
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles as any, { withTheme: true })(HomeComponent as any) as any) as any)

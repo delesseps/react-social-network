@@ -2,12 +2,12 @@ import { LanguageType } from 'store/reducers/locale/langugeType'
 
 export const environment = {
   firebase: {
-    apiKey: 'AIzaSyAHOZ7rWGDODCwJMB3WIt63CAIa90qI-jg',
-    authDomain: 'test-4515a.firebaseapp.com',
-    databaseURL: 'https://test-4515a.firebaseio.com',
-    projectId: 'test-4515a',
-    storageBucket: 'test-4515a.appspot.com',
-    messagingSenderId: '964743099489'
+    apiKey: 'AIzaSyA0nFZRYGckmeDBh3O0TmQ6YEfyUMHVRu0',
+    authDomain: 'react-social-network-delesseps.firebaseapp.com',
+    databaseURL: 'https://react-social-network-delesseps.firebaseio.com',
+    projectId: 'react-social-network-delesseps',
+    storageBucket: 'react-social-network-delesseps.appspot.com',
+    messagingSenderId: '437198044465'
   },
   settings: {
     enabledOAuthLogin: true,

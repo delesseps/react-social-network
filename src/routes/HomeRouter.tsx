@@ -2,7 +2,7 @@
 import PrivateRoute from './PrivateRoute'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, withRouter, Redirect, NavLink } from 'react-router-dom'
+import { Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom'
 import { getTranslate, getActiveLanguage } from 'react-localize-redux'
 import Loadable from 'react-loadable'
 import { Map } from 'immutable'
@@ -31,7 +31,7 @@ const AsyncPeople = Loadable({
 /**
  * Home Router
  */
-export class HomeRouter extends Component<IRouterProps, any> {
+export class HomeRouter extends Component<IRouterProps & RouteComponentProps<any>, any> {
   render () {
     const { enabled, match, data, translate } = this.props
     const St = AsyncStream
@@ -80,4 +80,4 @@ const mapStateToProps = (state: Map<string, any>, ownProps: IRouterProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeRouter as any) as any) as typeof HomeRouter
+export default connect(mapStateToProps, mapDispatchToProps)(HomeRouter)
